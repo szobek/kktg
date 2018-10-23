@@ -9,8 +9,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule {
-    constructor() {
-        console.log('run constructor app routing');
-    }
-}
+export class AppRoutingModule {}
