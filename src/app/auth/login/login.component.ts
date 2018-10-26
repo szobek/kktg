@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit, OnDestroy {
             (bool: boolean) => {
                 if (bool) {
                     localStorage.user = JSON.stringify({
-                        name: 'Kunszt Norbert'
+                        name: 'Kunszt Norbert 12'
                     });
                 } else {
                     localStorage.clear();
@@ -27,10 +27,9 @@ export class LoginComponent implements OnInit, OnDestroy {
             }
         );
         this.loginForm = this.fb.group({
-            email: new FormControl('', [Validators.required]),
-            password: new FormControl('', [Validators.required, Validators.minLength(8)]),
-        })
-        console.warn(this.loginForm);
+            email: new FormControl('asd@asd.asd', [Validators.required]),
+            password: new FormControl('123456789', [Validators.required, Validators.minLength(8)]),
+        });
 
     }
 
@@ -43,15 +42,13 @@ export class LoginComponent implements OnInit, OnDestroy {
     }
 
     saveLoginForm() {
-        if (this.loginForm.getRawValue().email === 'asd@asd.asd') {
-            this.authService.logged.next(true);
-        } else {
-            this.authService.logged.next(false);
-        }
+        const  bool = this.loginForm.getRawValue().email === 'asd@asd.asd'
+        console.log('logged a savetől', bool)
+        this.authService.logged.next(bool);
     }
 
     readForm() {
-        console.log(this.loginForm)
+
     }
 
 
