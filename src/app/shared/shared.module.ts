@@ -1,6 +1,5 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {AuthService} from '../auth/auth.service';
 import {ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
@@ -13,7 +12,7 @@ import {ReactiveFormsModule} from '@angular/forms';
         ReactiveFormsModule
     ],
     declarations: [],
-    providers: [AuthService]
+    providers: []
 })
 export class SharedModule {
 }
