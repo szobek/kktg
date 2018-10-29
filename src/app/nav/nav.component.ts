@@ -9,10 +9,14 @@ import {AuthService} from '../auth/auth.service';
 export class NavComponent implements OnInit, OnDestroy {
 
     logged: boolean;
+    store;
 
     constructor(private authService: AuthService) {
         this.authService.logged.subscribe( (res: any) => {
             this.logged = res;
+            if(res) {
+
+            }
         });
     }
 
