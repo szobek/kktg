@@ -2,7 +2,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {AuthService} from '../auth.service';
 import {Observable, of, Subscription} from 'rxjs';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-import {HttpClient} from '@angular/common/http';
+import {Router} from '@angular/router';
 
 @Component({
     selector: 'app-login',
@@ -14,13 +14,15 @@ export class LoginComponent implements OnInit, OnDestroy {
     loginSub: Subscription;
     loginForm: FormGroup    ;
 
-    constructor(private authService: AuthService, private fb: FormBuilder) {
+    constructor(private authService: AuthService, private fb: FormBuilder, private router: Router) {
         this.loginSub = this.authService.logged.subscribe(
             (bool: boolean) => {
                 if (bool) {
                     localStorage.user = JSON.stringify({
                         name: 'Kunszt Norbert 12'
                     });
+
+                    this.router.navigate(['/']);
                 } else {
                     localStorage.clear();
                 }
@@ -43,7 +45,6 @@ export class LoginComponent implements OnInit, OnDestroy {
 
     saveLoginForm() {
         const  bool = this.loginForm.getRawValue().email === 'asd@asd.asd'
-        console.log('logged a savetől', bool)
         this.authService.logged.next(bool);
     }
 
